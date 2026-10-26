@@ -274,6 +274,7 @@
       const target = new Date(CONFIG.gate.unlockAt).getTime();
       const giftButton = document.getElementById("cdOpenGift");
       giftButton.disabled = true;
+      giftButton.classList.add("hidden");
       giftButton.onclick = () => {
         if (Date.now() < target) return;
         cdScreen.classList.add("hidden");
@@ -289,6 +290,7 @@
         if (diff <= 0) {
           clearInterval(timer);
           giftButton.disabled = false;
+          giftButton.classList.remove("hidden");
           document.getElementById("cdBot").textContent = "waktunya sudah tiba — buka yuk ✦";
         }
       };
