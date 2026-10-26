@@ -220,7 +220,7 @@
     const params = new URLSearchParams(location.search);
     if (CONFIG.dev.enablePreview && params.get("preview") === CONFIG.dev.previewCode) {
       openMainPage();
-    } else if (Date.now() < new Date(CONFIG.gate.unlockAt).getTime()) {
+    } else {
       document.getElementById("pwScreen").classList.add("hidden");
       startCountdown();
     }
