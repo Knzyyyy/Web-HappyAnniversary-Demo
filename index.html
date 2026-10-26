@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary, Nadya — 14.02</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Pinyon+Script&family=Poppins:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <style>
+    :root {
+      --ivory: #FBF6F2;
+      --blush: #F3DCDD;
+      --dusty-rose: #C98B97;
+      --deep-rose: #9E5566;
+      --rose-gold: #C9A58B;
+      --text-dark: #3A2B2F;
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Poppins', sans-serif;
+      --font-script: 'Pinyon Script', cursive;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      background: var(--ivory);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    ::selection {
+      background: rgba(201, 149, 151, 0.35);
+      color: var(--text-dark);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Background Editorial, Mesh, Bokeh & Partikel */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(243, 220, 221, 0.85) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(201, 139, 151, 0.3) 0%, transparent 50%),
+        var(--ivory);
+    }
+
+    .ambient-bg::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(243, 220, 221, 0.5) 0%, transparent 28%),
+        radial-gradient(circle at 70% 60%, rgba(201, 149, 151, 0.22) 0%, transparent 35%),
+        radial-gradient(circle at 50% 90%, rgba(201, 165, 139, 0.18) 0%, transparent 42%);
+      animation: ambientDrift 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientDrift {
+      from {
+        transform: translate3d(-2%, -2%, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(2%, 1%, 0) scale(1.03);
+      }
+
+      to {
+        transform: translate3d(-1%, 2%, 0) scale(1);
+      }
+    }
+
+    .bokeh-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bokeh {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0;
+      animation: bokehFloat 18s ease-in-out infinite;
+    }
+
+    .bokeh:nth-child(odd) {
+      background: rgba(201, 165, 139, 0.35);
+    }
+
+    .bokeh:nth-child(even) {
+      background: rgba(243, 220, 221, 0.45);
+    }
+
+    @keyframes bokehFloat {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: translateY(-35vh) translateX(8vw) scale(1);
+      }
+
+      85% {
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(-75vh) translateX(-6vw) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    #petalCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 8000;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      z-index: 9500;
+      background: linear-gradient(90deg, var(--dusty-rose), var(--rose-gold), var(--deep-rose));
+    }
+
+    /* Cursor trail & click sparkle */
+    .cursor-trail {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      width: 10px;
+      height: 10px;
+      background: rgba(201, 165, 139, 0.45);
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.18s ease, opacity 0.18s ease;
+      mix-blend-mode: multiply;
+    }
+
+    .cursor-trail:nth-child(2n) {
+      background: rgba(243, 220, 221, 0.55);
+    }
+
+    .click-sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      color: var(--rose-gold);
+      font-size: 10px;
+      animation: sparklePop 0.75s ease-out forwards;
+    }
+
+    @keyframes sparklePop {
+      0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--sx), var(--sy)) scale(0) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @media (pointer: coarse) {
+      .cursor-trail {
+        display: none !important;
+      }
+    }
+
+    /* Tombol Musik */
+    .music-dock {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px 8px 8px;
+      border-radius: 999px;
+      background: rgba(251, 246, 242, 0.92);
+      border: 1px solid var(--rose-gold);
+      box-shadow: 0 10px 28px rgba(58, 43, 47, 0.1);
+      backdrop-filter: blur(8px);
+      isolation: isolate;
+      touch-action: manipulation;
+    }
+
+    .music-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--deep-rose);
+      border: none;
+      cursor: pointer;
+      color: var(--ivory);
+      transition: transform 0.25s var(--spring), background 0.25s ease;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.08);
+      background: var(--dusty-rose);
+    }
+
+    .music-btn:active {
+      transform: scale(0.96);
+    }
+
+    .music-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: opacity 0.2s ease;
+    }
+
+    .music-btn .icon-mute {
+      display: none;
+    }
+
+    .music-btn.muted .icon-vol {
+      display: none;
+    }
+
+    .music-btn.muted .icon-mute {
+      display: block;
+    }
+
+    .volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 80px;
+      height: 18px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(201, 165, 139, 0.35);
+    }
+
+    .volume-slider::-moz-range-track {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(201, 165, 139, 0.35);
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      margin-top: -5px;
+      border-radius: 50%;
+      background: var(--rose-gold);
+      border: 2px solid var(--ivory);
+      box-shadow: 0 0 0 2px rgba(201, 165, 139, 0.3);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--rose-gold);
+      border: 2px solid var(--ivory);
+      box-shadow: 0 0 0 2px rgba(201, 165, 139, 0.3);
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .bars span {
+      width: 3px;
+      height: 4px;
+      background: var(--deep-rose);
+      border-radius: 2px;
+    }
+
+    .bars.play span:nth-child(1) {
+      animation: eq 0.9s ease-in-out infinite 0s;
+    }
+
+    .bars.play span:nth-child(2) {
+      animation: eq 0.9s ease-in-out infinite 0.18s;
+    }
+
+    .bars.play span:nth-child(3) {
+      animation: eq 0.9s ease-in-out infinite 0.36s;
+    }
+
+    @keyframes eq {
+
+      0%,
+      100% {
+        transform: scaleY(0.35);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .music-dock {
+        right: 12px;
+        bottom: 12px;
+        padding: 6px 10px 6px 6px;
+      }
+
+      .music-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .volume-slider {
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    /* Komponen Editorial */
+    .container {
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 110px 0;
+    }
+
+    .sec-head {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--deep-rose);
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .line {
+      width: 60px;
+      height: 1px;
+      background: var(--rose-gold);
+      margin: 18px auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 32px;
+      border: 1px solid var(--deep-rose);
+      color: var(--deep-rose);
+      background: transparent;
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.35s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--deep-rose);
+      color: var(--ivory);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(158, 85, 102, 0.22);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    .welcome-flower {
+      display: block;
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 22px;
+      filter: drop-shadow(0 8px 18px rgba(158, 85, 102, 0.2));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    #welcomeScreen {
+      position: relative;
+    }
+
+    .welcome-title {
+      margin-bottom: 28px;
+      font-family: var(--font-body);
+      font-size: clamp(1.65rem, 6vw, 2.5rem);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .welcome-actions {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: center;
+      gap: 18px;
+      width: min(100%, 310px);
+      min-height: 180px;
+      margin: 0 auto;
+      padding: 12px 8px;
+    }
+
+    .welcome-actions .btn {
+      width: 100%;
+      min-width: 0;
+      padding: 14px 24px;
+      letter-spacing: 0.12em;
+    }
+
+    .welcome-no {
+      position: relative;
+      z-index: 1;
+      background: rgba(251, 246, 242, 0.92);
+    }
+
+    .welcome-actions.no-dodging {
+      position: static;
+    }
+
+    .welcome-actions.no-dodging .welcome-no {
+      position: absolute;
+      width: min(136px, calc(50% - 8px));
+      transform: none;
+      transition: left 0.48s var(--ease), top 0.48s var(--ease), background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+      will-change: left, top;
+    }
+
+    @media (max-width: 420px) {
+      .welcome-actions {
+        gap: 14px;
+        min-height: 180px;
+      }
+
+      .welcome-actions .btn {
+        padding-inline: 12px;
+      }
+    }
+
+    /* GATE OVERLAY */
+    .gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 7000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: radial-gradient(circle at center, var(--ivory) 0%, var(--blush) 130%);
+      transition: opacity 0.9s var(--ease), visibility 0.9s;
+    }
+
+    .gate-overlay.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .card-box {
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      text-align: center;
+      padding: 40px 26px;
+      background: rgba(251, 246, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--rose-gold);
+      box-shadow: 0 20px 50px rgba(58, 43, 47, 0.08);
+      animation: popIn 0.6s var(--ease) forwards;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .cd-grid {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .cd-num {
+      font-family: var(--font-heading);
+      font-size: clamp(2.3rem, 7vw, 3.6rem);
+      line-height: 1;
+      display: block;
+    }
+
+    .cd-lbl {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    /* Ornamen Bunga & Teks Sapaan di Atas Keypad */
+    .pin-flower {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 10px;
+      display: block;
+      filter: drop-shadow(0 6px 14px rgba(158, 85, 102, 0.22));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .pin-greeting {
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    .pin-sub {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--deep-rose);
+      margin-top: 2px;
+    }
+
+    /* Indikator 6 Lingkaran PIN */
+    .pin-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 22px 0 26px;
+    }
+
+    .pin-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rose-gold);
+      background: transparent;
+      transition: transform 0.25s var(--spring), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .pin-dot.filled {
+      background: var(--deep-rose);
+      border-color: var(--deep-rose);
+      transform: scale(1.18);
+      box-shadow: 0 0 10px rgba(158, 85, 102, 0.35);
+    }
+
+    .pin-dot.error {
+      background: #d96b78;
+      border-color: #d96b78;
+    }
+
+    /* Grid Keypad 3x4 */
+    .pin-keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 270px;
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    .pin-key {
+      height: 62px;
+      border-radius: 18px;
+      background: #FFFDFB;
+      border: 1px solid rgba(201, 165, 139, 0.55);
+      box-shadow: 0 6px 16px rgba(58, 43, 47, 0.05);
+      font-family: var(--font-body);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s var(--spring), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .pin-key:hover {
+      background: var(--blush);
+      border-color: var(--dusty-rose);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(158, 85, 102, 0.12);
+    }
+
+    .pin-key:active,
+    .pin-key.pressed {
+      transform: scale(0.92);
+      background: var(--dusty-rose);
+      color: var(--ivory);
+    }
+
+    .pin-key.key-back {
+      background: rgba(243, 220, 221, 0.45);
+      border-color: var(--deep-rose);
+      color: var(--deep-rose);
+    }
+
+    .pin-key.key-back:hover {
+      background: var(--deep-rose);
+      color: var(--ivory);
+    }
+
+    .pin-key svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .pin-clue {
+      margin-top: 22px;
+      font-size: 0.78rem;
+      color: var(--text-dark);
+      opacity: 0.72;
+      letter-spacing: 0.04em;
+    }
+
+    .shake {
+      animation: shakeAnim 0.4s ease;
+    }
+
+    @keyframes shakeAnim {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      25% {
+        transform: translateX(-7px)
+      }
+
+      75% {
+        transform: translateX(7px)
+      }
+    }
+
+    .msg-wrong {
+      font-size: 0.85rem;
+      color: var(--deep-rose);
+      margin-top: 14px;
+    }
+
+    .msg-hint {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.05rem;
+      background: rgba(243, 220, 221, 0.65);
+      padding: 10px 14px;
+      margin-top: 12px;
+      border-left: 2px solid var(--deep-rose);
+    }
+
+    /* Segel Lilin */
+    .wax-seal {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      margin: 20px auto;
+      background: radial-gradient(circle at 35% 30%, #b86b7d, var(--deep-rose) 65%, #6e3542 100%);
+      box-shadow: 0 12px 28px rgba(158, 85, 102, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--ivory);
+      border: 2px dashed rgba(251, 246, 242, 0.5);
+    }
+
+    .wax-seal.break {
+      animation: sealBreak 1.5s var(--ease) forwards;
+    }
+
+    @keyframes sealBreak {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      40% {
+        transform: scale(1.14) rotate(-6deg);
+      }
+
+      100% {
+        transform: scale(1.85) rotate(8deg);
+        opacity: 0;
+        filter: blur(6px);
+      }
+    }
+
+    /* Story Slide Interaktif */
+    .story-emoji {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      display: inline-block;
+      animation: float 2.4s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-8px)
+      }
+    }
+
+    .story-text {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      line-height: 1.45;
+      margin: 14px 0 26px;
+      min-height: 68px;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--rose-gold);
+      opacity: 0.35;
+    }
+
+    .dot.active {
+      opacity: 1;
+      background: var(--deep-rose);
+      transform: scale(1.25);
+    }
+
+    /* Hero & Counter Waktu Bersama */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 7vw, 4.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    .hero-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(18px);
+      margin: 0 0.13em;
+      transition: all 0.8s var(--ease);
+    }
+
+    .hero-word.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px 12px;
+      padding: 34px 18px;
+      border-top: 1px solid var(--rose-gold);
+      border-bottom: 1px solid var(--rose-gold);
+      text-align: center;
+    }
+
+    @media(min-width:768px) {
+      .tg-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    .tg-num {
+      font-family: var(--font-heading);
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      line-height: 1.1;
+      display: block;
+    }
+
+    /* Timeline */
+    .tl-wrap {
+      position: relative;
+      padding: 10px 0;
+      isolation: isolate;
+    }
+
+    .tl-line-bg,
+    .tl-line-progress {
+      position: absolute;
+      top: 0;
+      left: 14px;
+      transform: translateX(-50%);
+      width: 1.5px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .tl-line-bg {
+      height: 100%;
+      background: rgba(201, 165, 139, 0.3);
+    }
+
+    .tl-line-progress {
+      height: 0%;
+      background: var(--deep-rose);
+    }
+
+    .tl-item {
+      position: relative;
+      z-index: 1;
+      padding-left: 42px;
+      margin-bottom: 60px;
+      display: grid;
+      gap: 20px;
+      align-items: center;
+      overflow-wrap: anywhere;
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: var(--ivory);
+      border: 2px solid var(--deep-rose);
+      transition: background 0.35s ease, transform 0.35s var(--ease), box-shadow 0.35s ease;
+    }
+
+    .tl-dot.active {
+      background: var(--deep-rose);
+      transform: translateX(-50%) scale(1.3);
+      box-shadow: 0 0 14px rgba(158, 85, 102, 0.4);
+    }
+
+    .tl-txt,
+    .tl-img-box {
+      min-width: 0;
+    }
+
+    .tl-item .title {
+      font-size: 1.75rem;
+      margin-bottom: 8px;
+    }
+
+    .tl-item .story {
+      font-size: 0.92rem;
+      opacity: 0.85;
+    }
+
+    @media(min-width:768px) {
+
+      .tl-line-bg,
+      .tl-line-progress {
+        left: 50%;
+      }
+
+      .tl-item {
+        padding-left: 0;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 52px;
+      }
+
+      .tl-item:nth-child(odd) .tl-txt {
+        text-align: right;
+      }
+
+      .tl-item:nth-child(even) .tl-txt {
+        order: 2;
+      }
+
+      .tl-dot {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .tl-dot.active {
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+    }
+
+    .tl-img-box {
+      padding: 8px;
+      border: 1px solid var(--rose-gold);
+      background: var(--ivory);
+      overflow: hidden;
+    }
+
+    .tl-img-box img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .tl-img-box:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Galeri & Kartu Flip 3D */
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 0 auto;
+    }
+
+    @media(min-width:768px) {
+      .gal-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+
+    .gal-card {
+      padding: 8px;
+      border: 1px solid var(--rose-gold);
+      background: var(--ivory);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.5s var(--spring), box-shadow 0.5s var(--ease);
+    }
+
+    .gal-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .gal-card video {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+      background: var(--blush);
+    }
+
+    .gal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(158, 85, 102, 0.16);
+    }
+
+    .gal-card:hover img,
+    .gal-card:hover video {
+      transform: scale(1.06);
+    }
+
+    .rsn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+      gap: 18px;
+    }
+
+    .rsn-card {
+      perspective: 1000px;
+      height: 200px;
+      cursor: pointer;
+      transition: transform 0.5s var(--spring), box-shadow 0.5s var(--ease);
+    }
+
+    .rsn-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(158, 85, 102, 0.14);
+    }
+
+    .rsn-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.65s var(--ease);
+      transform-style: preserve-3d;
+    }
+
+    .rsn-card.flip .rsn-inner {
+      transform: rotateY(180deg);
+    }
+
+    .rsn-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--rose-gold);
+    }
+
+    .rsn-front {
+      background: var(--ivory);
+    }
+
+    .rsn-back {
+      background: var(--blush);
+      transform: rotateY(180deg);
+      font-family: var(--font-heading);
+      font-size: 1.18rem;
+    }
+
+    /* Surat & Lightbox */
+    .letter-box {
+      background: #FFFDFB;
+      padding: clamp(24px, 5vw, 52px);
+      border: 1px solid var(--rose-gold);
+      box-shadow: 0 20px 50px rgba(58, 43, 47, 0.05);
+    }
+
+    .letter-body {
+      font-family: var(--font-heading);
+      font-size: clamp(1.16rem, 2.3vw, 1.35rem);
+      white-space: pre-line;
+      margin-top: 22px;
+      min-height: 140px;
+    }
+
+    .letter-sign {
+      margin-top: 32px;
+      text-align: right;
+      font-family: var(--font-script);
+      font-size: 1.3rem;
+      color: var(--deep-rose);
+      white-space: pre-line;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9600;
+      background: rgba(251, 246, 242, 0.96);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox img {
+      max-height: 72vh;
+      max-width: 90vw;
+      border: 1px solid var(--rose-gold);
+      padding: 8px;
+      background: var(--ivory);
+    }
+
+    .lightbox video {
+      max-height: 72vh;
+      max-width: 90vw;
+      border: 1px solid var(--rose-gold);
+      padding: 8px;
+      background: var(--ivory);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 1rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--deep-rose);
+      padding: 14px;
+    }
+
+    .lb-prev {
+      left: 10px;
+    }
+
+    .lb-next {
+      right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ambient-bg"></div>
+  <div class="bokeh-layer" id="bokehLayer"></div>
+  <div class="progress-bar" id="progressBar"></div>
+  <canvas id="petalCanvas"></canvas>
+  <div id="cursorTrail" aria-hidden="true"></div>
+
+  <!-- Tombol Musik -->
+  <div id="musicDock" class="music-dock hidden">
+    <button id="musicBtn" class="music-btn" aria-label="Putar musik">
+      <svg class="icon-vol" viewBox="0 0 24 24">
+        <path
+          d="M4 10v4h3l4 3V7l-4 3H4zm11 2a3 3 0 0 0-1.5-2.6v5.2A3 3 0 0 0 15 12zm0-6.3v1.6a6 6 0 0 1 0 9.4v1.6a7.6 7.6 0 0 0 0-12.6z" />
+      </svg>
+      <svg class="icon-mute" viewBox="0 0 24 24">
+        <path
+          d="M16.5 12a3 3 0 0 0-1.5-2.6v1.8l1.5 1.5V12zm3.5-6.3v1.6a7.6 7.6 0 0 1 2.1 5.1c0 1.5-.4 2.9-1.2 4.1l1.1 1.1A9.1 9.1 0 0 0 23 12.4a9.2 9.2 0 0 0-3-6.7zM4.3 3 3 4.3 7.7 9H4v6h3l4 3v-6.7l4.3 4.3v.2a3 3 0 0 1-1.5-2.6l1.5 1.5V17l-1.1-1.1a7.6 7.6 0 0 1-2.7 2v1.6a9.1 9.1 0 0 0 4.2-2.2L19.7 21 21 19.7 4.3 3zM12 7l-.2.2L12 7.4V7z" />
+      </svg>
+    </button>
+    <input id="volumeSlider" class="volume-slider" type="range" min="0" max="100" value="40" aria-label="Volume musik">
+    <div class="bars" id="musicBars"><span></span><span></span><span></span></div>
+  </div>
+  <audio id="bgAudio" loop preload="auto"></audio>
+
+  <!-- GATE FLOW OVERLAY -->
+  <div id="gateOverlay" class="gate-overlay">
+
+    <div id="welcomeScreen" class="card-box hidden">
+      <svg class="welcome-flower" viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="translate(50,50)">
+          <ellipse rx="14" ry="28" transform="rotate(0) translate(0,-16)" fill="#E598A6" />
+          <ellipse rx="14" ry="28" transform="rotate(60) translate(0,-16)" fill="#EDA6B2" />
+          <ellipse rx="14" ry="28" transform="rotate(120) translate(0,-16)" fill="#E598A6" />
+          <ellipse rx="14" ry="28" transform="rotate(180) translate(0,-16)" fill="#EDA6B2" />
+          <ellipse rx="14" ry="28" transform="rotate(240) translate(0,-16)" fill="#E598A6" />
+          <ellipse rx="14" ry="28" transform="rotate(300) translate(0,-16)" fill="#EDA6B2" />
+          <circle r="11" fill="#FBF6F2" stroke="#C9A58B" stroke-width="3" />
+          <circle r="6" fill="#E8C97A" />
+        </g>
+      </svg>
+      <h1 class="welcome-title">apakah kamu siap<br>membuka ini cayang?</h1>
+      <div id="welcomeActions" class="welcome-actions">
+        <button id="welcomeYes" class="btn" type="button">Yess</button>
+        <button id="welcomeNo" class="btn welcome-no" type="button">Noo</button>
+      </div>
+    </div>
+
+    <!-- 1. Layar Countdown (Muncul jika unlockAt di masa depan) -->
+    <div id="cdScreen" class="card-box hidden">
+      <p class="label" id="cdTop">Sebuah kejutan kecil sedang disiapkan untukmu</p>
+      <div class="line"></div>
+      <div class="cd-grid">
+        <div><span id="cD" class="cd-num">00</span><span class="cd-lbl">Hari</span></div>
+        <div><span id="cH" class="cd-num">00</span><span class="cd-lbl">Jam</span></div>
+        <div><span id="cM" class="cd-num">00</span><span class="cd-lbl">Menit</span></div>
+        <div><span id="cS" class="cd-num">00</span><span class="cd-lbl">Detik</span></div>
+      </div>
+      <p id="cdBot" style="font-size:0.84rem;opacity:0.75">Halaman ini akan terbuka otomatis saat waktunya tiba.</p>
+    </div>
+
+    <!-- 2. Layar Password (LANGSUNG TAMPIL DEFAULT AGAR TIDAK PERNAH BLANK) -->
+    <!-- 2. Layar Password dengan PIN Keypad 6 Digit -->
+    <div id="pwScreen" class="card-box">
+      <div id="pwFormArea">
+        <!-- Ikon Bunga Pink Lembut di Atas -->
+        <svg class="pin-flower" viewBox="0 0 100 100" aria-hidden="true">
+          <g transform="translate(50,50)">
+            <ellipse rx="14" ry="28" transform="rotate(0) translate(0,-16)" fill="#E598A6" opacity="0.9" />
+            <ellipse rx="14" ry="28" transform="rotate(60) translate(0,-16)" fill="#EDA6B2" opacity="0.9" />
+            <ellipse rx="14" ry="28" transform="rotate(120) translate(0,-16)" fill="#E598A6" opacity="0.9" />
+            <ellipse rx="14" ry="28" transform="rotate(180) translate(0,-16)" fill="#EDA6B2" opacity="0.9" />
+            <ellipse rx="14" ry="28" transform="rotate(240) translate(0,-16)" fill="#E598A6" opacity="0.9" />
+            <ellipse rx="14" ry="28" transform="rotate(300) translate(0,-16)" fill="#EDA6B2" opacity="0.9" />
+            <circle r="11" fill="#FBF6F2" stroke="#C9A58B" stroke-width="3" />
+            <circle r="6" fill="#E8C97A" />
+          </g>
+        </svg>
+
+        <p class="label">Undangan Pribadi</p>
+        <h1 class="title" style="font-size:2rem">Masukkan Tanggal Istimewa</h1>
+        <p id="pinGreeting" class="pin-greeting">Hi lifii, ayo tebak passwordnya~</p>
+        <p class="pin-sub">i bet u know itt!!</p>
+
+        <!-- 6 Lingkaran Indikator PIN -->
+        <div id="pinDots" class="pin-dots" aria-label="Indikator PIN"></div>
+
+        <!-- Keypad Angka 1 - 9, 0, dan Hapus -->
+        <div class="pin-keypad" role="group" aria-label="Keypad Password">
+          <button type="button" class="pin-key" data-num="1">1</button>
+          <button type="button" class="pin-key" data-num="2">2</button>
+          <button type="button" class="pin-key" data-num="3">3</button>
+          <button type="button" class="pin-key" data-num="4">4</button>
+          <button type="button" class="pin-key" data-num="5">5</button>
+          <button type="button" class="pin-key" data-num="6">6</button>
+          <button type="button" class="pin-key" data-num="7">7</button>
+          <button type="button" class="pin-key" data-num="8">8</button>
+          <button type="button" class="pin-key" data-num="9">9</button>
+          <div aria-hidden="true"></div>
+          <button type="button" class="pin-key" data-num="0">0</button>
+          <button type="button" class="pin-key key-back" id="pinBackspace" aria-label="Hapus angka">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
+              <line x1="18" y1="9" x2="12" y2="15" />
+              <line x1="12" y1="9" x2="18" y2="15" />
+            </svg>
+          </button>
+        </div>
+
+        <p id="pinClue" class="pin-clue">clue: tanggal jadian kita (DDMMYY)</p>
+
+        <p id="wrongMsg" class="msg-wrong hidden"></p>
+        <p id="hintMsg" class="msg-hint hidden"></p>
+        <div style="margin-top:14px">
+          <a id="waHelpBtn" href="#" target="_blank" class="btn hidden" style="font-size:0.68rem;padding:8px 18px">Minta
+            Bantuan WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Animasi Segel Pecah -->
+      <div id="sealArea" class="hidden">
+        <div id="waxSeal" class="wax-seal">R&N</div>
+        <p style="font-family:var(--font-heading);font-style:italic;font-size:1.2rem">Membuka segel kenangan...</p>
+      </div>
+    </div>
+
+    <!-- 3. Layar Story Interaktif (Ala web-happy-birthday-dusky) -->
+    <div id="storyScreen" class="card-box hidden">
+      <p class="label" id="storyLabel">Untukmu</p>
+      <div class="story-emoji" id="storyEmoji">💌</div>
+      <p class="story-text" id="storyText"></p>
+      <div class="dots" id="storyDots"></div>
+      <button id="nextStoryBtn" class="btn">Lanjut &rarr;</button>
+    </div>
+
+  </div>
+
+  <!-- HALAMAN UTAMA -->
+  <main id="mainPage" class="hidden">
+    <section class="hero" data-aos="fade-up">
+      <div class="container">
+        <p class="label">Lembaran Perjalanan Kita</p>
+        <h1 id="heroTitle" class="hero-title"></h1>
+        <div class="line"></div>
+        <p id="heroSub" style="font-family:var(--font-heading);font-style:italic;font-size:1.35rem;opacity:0.8"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" data-aos="fade-up">
+        <div class="sec-head">
+          <p class="label">Sejak Hari Pertama</p>
+          <h2 class="title">Setiap Detik Bersamamu</h2>
+        </div>
+        <div class="tg-grid">
+          <div><span id="tY" class="tg-num">0</span><span class="cd-lbl">Tahun</span></div>
+          <div><span id="tMo" class="tg-num">0</span><span class="cd-lbl">Bulan</span></div>
+          <div><span id="tD" class="tg-num">0</span><span class="cd-lbl">Hari</span></div>
+          <div><span id="tH" class="tg-num">00</span><span class="cd-lbl">Jam</span></div>
+          <div><span id="tMi" class="tg-num">00</span><span class="cd-lbl">Menit</span></div>
+          <div><span id="tS" class="tg-num">00</span><span class="cd-lbl">Detik</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="sec-head" data-aos="fade-up">
+          <p class="label">Our Story</p>
+          <h2 class="title">Momen yang Membentuk Kita</h2>
+        </div>
+        <div class="tl-wrap" data-aos="fade-up" data-aos-delay="100">
+          <div class="tl-line-bg" aria-hidden="true"></div>
+          <div class="tl-line-progress" aria-hidden="true"></div>
+          <div id="tlList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="sec-head" data-aos="fade-up">
+          <p class="label">Potret Kenangan</p>
+          <h2 class="title">Bingkai Kecil Kebahagiaan</h2>
+        </div>
+        <div id="galGrid" class="gal-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="sec-head" data-aos="fade-up">
+          <p class="label">Dari Hati</p>
+          <h2 class="title">Kenapa aku suka kamu</h2>
+          <p style="font-size:0.85rem;opacity:0.7;margin-top:6px">Sentuh kartu untuk membalik catatan kecil</p>
+        </div>
+        <div id="rsnGrid" class="rsn-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" data-aos="fade-up">
+        <div class="letter-box">
+          <p class="label" style="text-align:center">Sebuah Catatan</p>
+          <div class="line"></div>
+          <div id="letterBody" class="letter-body"></div>
+          <div id="letterSign" class="letter-sign"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer data-aos="fade-up" style="text-align:center;padding:45px 0 75px">
+      <div class="line"></div>
+      <p id="footNames" style="font-family:var(--font-script);font-size:2.2rem;color:var(--deep-rose)"></p>
+    </footer>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox hidden">
+    <button class="lb-close" id="lbClose">&times;</button>
+    <button class="lb-nav lb-prev" id="lbPrev">&#10094;</button>
+    <img id="lbImg" src="" alt="" />
+    <video id="lbVideo" class="hidden" controls playsinline></video>
+    <p id="lbCap" style="margin-top:14px;font-family:var(--font-heading);font-style:italic;font-size:1.2rem"></p>
+    <button class="lb-nav lb-next" id="lbNext">&#10095;</button>
+  </div>
+
+  <style>
+    .gal-card {
+      position: relative;
+    }
+
+    .gal-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 18px;
+      border-radius: 50%;
+      color: var(--ivory);
+      background: var(--deep-rose);
+      pointer-events: none;
+    }
+
+    .gal-card:focus-visible {
+      outline: 2px solid var(--deep-rose);
+      outline-offset: 4px;
+    }
+
+    #videoStatus {
+      text-align: center;
+      color: var(--deep-rose);
+    }
+  </style>
+  <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // =========================================================================
+    // 1. CONFIG UTAMA (Semua pengaturan cukup diubah dari objek ini)
+    // =========================================================================
+    const CONFIG = {
+      identity: { clientName: "Iqbal", partnerName: "Lifi", pageTitle: "Happy Anniversary" },
+      gate: {
+        unlockAt: "2026-10-23T00:00:00+10:00", // Ubah ke 2027 jika ingin tes Countdown
+        passwordDate: "271023",              // Tanggal Anniversary: 14 / 02 / 2023
+        wrongMessage: "",
+        hintAfter: 2,
+        hintText: "Petunjuk: Hari ketika kita mulai jadi 'kita'",
+        helpAfter: 3,
+        helpWhatsapp: "6282125492682",
+        helpMessage: "aku lupa tanggal anniversary kita"
+      },
+      storySlides: [
+        { emoji: "🕰️", label: "Perjalanan Kita", text: "Terima kasih ya sudah menemani akuu melewati begitu banyak cerita." },
+        { emoji: "🥂", label: "Hari Istimewa", text: "Siap melihat kembali kepingan perjalanan kita dari awal sampai hari ini?" }
+      ],
+      relationship: { startDate: "2023-10-27T19:30:00+11:30" },
+      hero: { title: "Happy 3rd Anniversary, To Us", subtitle: "27 Oktober 2023 — Selamanya" },
+      timeline: [
+        { date: "19 September 2023", title: "Chatingan pertama", story: "Berawal dari kamu yang chat aku yang mau kenalan sama aku yang berlanjut dengan topik pembicaraan yang absurd tetapi sangat menyenangkan dan seru.", photo: "jejakwaktu/1.jpg" },
+        { date: "28 September 2023", title: "Pertama kali ketemuan secara langsung", story: "Waktu itu kamu beli dagangan umi disitu aku sangat deg deg an sampai gabisa hitung 50 - 8 HAHAHAHAHA, disitu aku jatuh cinta pada pandangan pertama 😆.", photo: "jejakwaktu/2.jpg" },
+        { date: "02 Oktober 2023", title: "Foto bareng pertama", story: "Gak lama dari itu disekolah ada event pakai baju batik disitu aku langsung ajak kamu foto bareng, muka tegang nya sangat terlihat yaa HAHAHA.", photo: "jejakwaktu/3.jpg" },
+        { date: "06 Oktober 2o23", title: "Nganterin pulang pertama kali", story: "Disitu aku panik banget mau ngobrolin apa dan pas udah sampai sana aku harus apa.", photo: "jejakwaktu/4.jpg" },
+        { date: "19 Oktober 2o23", title: "Fotobooth pertama", story: "Waktu itu kebetulan banget ada acara disekolah ada fotobooth nya kita langsung fotobooth bareng dan foto pake kamera aku jugaa aku sangat senang bisa foto banyak sama kamuu", photo: "jejakwaktu/5.jpg" },
+        { date: "21 Oktober 2o23", title: "Main bareng pertama", story: "Pertama kali kita main bareng diluar kita ke McD Pekayon yang sangat dingin ituu, pas kita tidak ada topik kita main ludo sama ular tangga HAHAHA. Foto nya ada watermarknya nya yahhh.", photo: "jejakwaktu/6.jpg" },
+        { date: "27 Oktober 2023", title: "Menyatakan Cinta", story: "Waktu perjalanan anterin kamu pulang aku menyatakan cinta ke kamu dan kamu bilang jawab nya nanti tunggu aku pulang 😭, aku kepikiran banget pas solat jum’at kamu nolak aku atau tidak sehabis solat jumat kamu chat aku dan kamu nerima cinta aku YEYYY", photo: "jejakwaktu/7.jpg" },
+        { date: "04 November 2023", title: "First date", story: "Waktu sampai rumah kamu aku pertama kali ketemu mamah kamu takut salah kata kata dan kita main sampai malam pas pulang kita kehujanan dan neduh di indomaret HAHAHA", photo: "jejakwaktu/8.jpg" },
+        { date: "25 November 2023", title: "First time main kerumah", story: "Dirumah kamu kita buat gelang dari manik manik dan disitu aku kenal mamah kamu ternyata sangat baik dan welcome ke akuu", photo: "jejakwaktu/9.jpg" },
+        { date: "Selamanya", title: "Our Now", story: "Banyak masa masa yang sudah kita laluin bareng bareng dan kita masih bersama sampai detik ini.", photo: "jejakwaktu/10.jpg" }
+      ],
+      gallery: [
+        { src: "album/1.jpg", caption: "First time kerumah papah." },
+        { src: "album/2.jpg", caption: "Ngerawat kamu waktu sakit." },
+        { src: "album/3.jpg", caption: "First time kerumah aku." },
+        { src: "album/4.jpg", caption: "Makan Sushi Tei dapat menu ulang tahun." },
+        { src: "album/1.mp4", caption: "Ngintip aku main hp." },
+        { src: "album/2.mp4", caption: "Ngeledekin gabisa foto." },
+        { src: "album/3.mp4", caption: "Main game tiru gambar." },
+        { src: "album/4.mp4", caption: "First time makan sushi." },
+        { src: "album/5.mp4", caption: "Udah mulai tengil." },
+        { src: "album/6.mp4", caption: "Membuat gelang manik manik." },
+        { src: "album/7.mp4", caption: "Dadahhhh." },
+      ],
+      reasons: [
+        "aku suka dengar kamu bercerita tentang hari harimu, rasanya tenang dan enggak bosen.",
+        "senyuman membuat aku sangat senang dan bisa jadi obat lelah aku.",
+        "kebaikan kamu bikin aku kagum dan semakin suka sama kamu.",
+        "perhatian hal hal kecil dari kamu membuat aku selalu merasa special.",
+        "ekspresi kamu waktu manja dan bercanda itu gemesin.",
+      ],
+      letter: {
+        body: "Happy 3rd Anniversary, Sayang!,\n\nTerimakasih banyak buat semua hal hal indah yang udah kita lewati bareng bareng 🤗. Terimakasih yaa sudah setia sama aku dan sabar ngadepin aku, dan selalu mengusahakan yang terbaik buat hubungan kita. Aku sayang bangett sama kamuu.\n\nUntuk Kedepannya aku akan usahakan yang terbaik buat kamu ❤️,Semoga kita bisa terus bersamaa, dan buat lebih banyak kenangan manis kedepan nyaa,\n\nMakasih udah jadi bagian terbaik di hidup aku. Love you so much, my love! 🥰",
+        signature: "Dengan kasih sayang,\nIqbal"
+      },
+      music: {
+        src: "aboutyou.mp3",
+        volume: 0.2
+      },
+      dev: { enablePreview: true, previewCode: "demo2026" }
+    };
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lenis = typeof Lenis !== "undefined" && !prefersReducedMotion
+      ? new Lenis({
+        duration: 1.15,
+        smoothWheel: true,
+        syncTouch: false,
+        anchors: true
+      })
+      : null;
+
+    if (lenis) {
+      const rafLenis = time => {
+        lenis.raf(time);
+        requestAnimationFrame(rafLenis);
+      };
+      requestAnimationFrame(rafLenis);
+    }
+
+    // =========================================================================
+    // 2. RENDER KONTEN & LOGIKA INTERAKSI
+    // =========================================================================
+    document.title = CONFIG.identity.pageTitle;
+    document.getElementById("waxSeal").textContent = `${CONFIG.identity.clientName[0]}&${CONFIG.identity.partnerName[0]}`;
+    document.getElementById("heroSub").textContent = CONFIG.hero.subtitle;
+    document.getElementById("letterSign").textContent = CONFIG.letter.signature;
+    document.getElementById("footNames").textContent = `${CONFIG.identity.clientName} & ${CONFIG.identity.partnerName}`;
+
+    // Render Hero Per Kata
+    const heroTitle = document.getElementById("heroTitle");
+    CONFIG.hero.title.split(" ").forEach(w => {
+      const s = document.createElement("span");
+      s.className = "hero-word"; s.textContent = w;
+      heroTitle.appendChild(s);
+    });
+
+    // Render Timeline
+    const webPhoto = src => src.replace(/\.jpg$/i, '.webp');
+    const videoPoster = src => src.replace(/\.mp4$/i, '-poster.webp');
+    const tlList = document.getElementById("tlList");
+    CONFIG.timeline.forEach((item, index) => {
+      const el = document.createElement("div");
+      el.className = "tl-item";
+      el.setAttribute("data-aos", index % 2 === 0 ? "fade-right" : "fade-left");
+      el.setAttribute("data-aos-once", "true");
+      el.setAttribute("data-aos-duration", "750");
+      el.innerHTML = `
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-txt">
+          <p class="label">${item.date}</p>
+          <h3 class="title">${item.title}</h3>
+          <p class="story">${item.story}</p>
+        </div>
+        <div class="tl-img-box"><img src="${webPhoto(item.photo)}" alt="${item.title}" width="800" height="600" loading="lazy" decoding="async"/></div>
+      `;
+      const photoButton = el.querySelector('.tl-img-box');
+      photoButton.tabIndex = 0;
+      photoButton.setAttribute('role', 'button');
+      photoButton.setAttribute('aria-label', `Buka foto: ${item.title}`);
+      photoButton.style.cursor = 'pointer';
+      photoButton.onclick = () => openLb(index, timelinePhotos);
+      photoButton.onkeydown = event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLb(index, timelinePhotos);
+        }
+      };
+      tlList.appendChild(el);
+    });
+
+    // Render Galeri & Lightbox
+    let curGal = 0;
+    const timelinePhotos = CONFIG.timeline.map(item => ({
+      src: item.photo,
+      caption: `${item.date} — ${item.title}`
+    }));
+    let activePhotos = CONFIG.gallery;
+    const galGrid = document.getElementById("galGrid");
+    const isVideo = item => /\.(mp4|webm|ogg)(?:$|\?)/i.test(item.src);
+    CONFIG.gallery.forEach((g, i) => {
+      const d = document.createElement("div");
+      d.className = "gal-card";
+      d.setAttribute("data-aos", "zoom-in");
+      d.setAttribute("data-aos-delay", String((i % 6) * 70));
+      d.setAttribute("data-aos-once", "true");
+      d.setAttribute("data-aos-duration", "650");
+      if (isVideo(g)) {
+        const poster = document.createElement('img');
+        poster.src = videoPoster(g.src);
+        poster.alt = g.caption;
+        poster.loading = 'lazy';
+        poster.decoding = 'async';
+        const play = document.createElement('span');
+        play.className = 'gal-play';
+        play.textContent = '▶';
+        play.setAttribute('aria-hidden', 'true');
+        d.append(poster, play);
+      } else {
+        const image = document.createElement("img");
+        image.src = webPhoto(g.src);
+        image.alt = g.caption;
+        image.loading = "lazy";
+        d.appendChild(image);
+      }
+      d.onclick = () => openLb(i);
+      d.tabIndex = 0;
+      d.setAttribute('role', 'button');
+      d.setAttribute('aria-label', `${isVideo(g) ? 'Putar video' : 'Buka foto'}: ${g.caption}`);
+      d.onkeydown = event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLb(i); }
+      };
+      galGrid.appendChild(d);
+    });
+
+    function openLb(i, photos = CONFIG.gallery) {
+      activePhotos = photos;
+      curGal = i;
+      const item = activePhotos[i];
+      const image = document.getElementById("lbImg");
+      const video = document.getElementById("lbVideo");
+      const request = ++videoRequest;
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+      setVideoStatus('');
+      document.getElementById('videoRetry').classList.add('hidden');
+      if (isVideo(item)) {
+        image.classList.add("hidden");
+        video.classList.remove("hidden");
+        video.poster = videoPoster(item.src);
+        setVideoStatus('Memuat video…');
+        video.src = item.src;
+        video.load();
+        video.play().catch(error => {
+          if (request !== videoRequest || error.name === 'AbortError') return;
+          if (error.name === 'NotAllowedError') setVideoStatus('Ketuk Play untuk memutar video.');
+        });
+      } else {
+        video.classList.add("hidden");
+        image.classList.remove("hidden");
+        image.src = webPhoto(item.src);
+        image.alt = item.caption;
+      }
+      document.getElementById("lbCap").textContent = item.caption;
+      document.getElementById("lightbox").classList.remove("hidden");
+    }
+    const galleryVideo = document.getElementById("lbVideo");
+    let videoRequest = 0;
+    const videoStatus = document.createElement('p');
+    videoStatus.id = 'videoStatus';
+    videoStatus.setAttribute('role', 'status');
+    const videoRetry = document.createElement('button');
+    videoRetry.id = 'videoRetry';
+    videoRetry.className = 'btn hidden';
+    videoRetry.textContent = 'Coba lagi';
+    videoRetry.onclick = () => openLb(curGal, activePhotos);
+    galleryVideo.after(videoStatus, videoRetry);
+    galleryVideo.preload = 'none';
+    function setVideoStatus(message) { videoStatus.textContent = message; }
+    galleryVideo.addEventListener('waiting', () => {
+      if (galleryVideo.hasAttribute('src')) setVideoStatus('Memuat video…');
+    });
+    galleryVideo.addEventListener('playing', () => setVideoStatus(''));
+    galleryVideo.addEventListener('error', () => {
+      if (!galleryVideo.hasAttribute('src')) return;
+      setVideoStatus('Video gagal dimuat. Periksa koneksi lalu coba lagi.');
+      videoRetry.classList.remove('hidden');
+    });
+    let resumeMusicAfterVideo = false;
+    galleryVideo.addEventListener("play", () => {
+      const audio = document.getElementById("bgAudio");
+      resumeMusicAfterVideo = !audio.paused && audio.volume > 0;
+      audio.pause();
+      document.getElementById("musicBars").classList.remove("play");
+    });
+    galleryVideo.addEventListener("pause", () => {
+      if (resumeMusicAfterVideo) {
+        resumeMusicAfterVideo = false;
+        resumeBackgroundMusic();
+      }
+    });
+    function resumeBackgroundMusic() {
+      const audio = document.getElementById("bgAudio");
+      if (!audio.src || audio.volume <= 0) return;
+      audio.play().then(() => document.getElementById("musicBars").classList.add("play")).catch(() => { });
+    }
+    document.getElementById("lbClose").onclick = () => {
+      videoRequest++;
+      galleryVideo.pause();
+      galleryVideo.removeAttribute('src');
+      galleryVideo.load();
+      setVideoStatus('');
+      document.getElementById("lightbox").classList.add("hidden");
+    };
+    document.getElementById("lbPrev").onclick = () => openLb((curGal - 1 + activePhotos.length) % activePhotos.length, activePhotos);
+    document.getElementById("lbNext").onclick = () => openLb((curGal + 1) % activePhotos.length, activePhotos);
+
+    // Render Kartu Flip 3D
+    const rsnGrid = document.getElementById("rsnGrid");
+    CONFIG.reasons.forEach((r, i) => {
+      const c = document.createElement("div");
+      c.className = "rsn-card";
+      c.setAttribute("data-aos", "flip-up");
+      c.setAttribute("data-aos-delay", String((i % 5) * 85));
+      c.setAttribute("data-aos-once", "true");
+      c.setAttribute("data-aos-duration", "750");
+      c.innerHTML = `
+        <div class="rsn-inner">
+          <div class="rsn-face rsn-front">
+            <span style="font-family:var(--font-heading);font-size:2.4rem;font-style:italic;color:var(--dusty-rose)">0${i + 1}</span>
+            <span class="cd-lbl" style="margin-top:6px">Sentuh Kartu</span>
+          </div>
+          <div class="rsn-face rsn-back">“${r}”</div>
+        </div>
+      `;
+      c.onclick = () => c.classList.toggle("flip");
+      rsnGrid.appendChild(c);
+    });
+
+    // Cek Preview atau Countdown
+    const params = new URLSearchParams(location.search);
+    if (CONFIG.dev.enablePreview && params.get("preview") === CONFIG.dev.previewCode) {
+      openMainPage();
+    } else if (Date.now() < new Date(CONFIG.gate.unlockAt).getTime()) {
+      document.getElementById("pwScreen").classList.add("hidden");
+      startCountdown();
+    }
+
+    document.getElementById("welcomeYes").addEventListener("click", () => {
+      document.getElementById("welcomeScreen").classList.add("hidden");
+      startStorySlides();
+    });
+    document.getElementById("welcomeNo").addEventListener("click", () => {
+      const actions = document.getElementById("welcomeActions");
+      const noButton = document.getElementById("welcomeNo");
+      const yesButton = document.getElementById("welcomeYes");
+      const welcomeCard = document.getElementById("welcomeScreen");
+      actions.classList.add("no-dodging");
+      const area = welcomeCard.getBoundingClientRect();
+      const buttonWidth = noButton.offsetWidth;
+      const buttonHeight = noButton.offsetHeight;
+      const pad = 16;
+      const moveRadius = 72;
+      const yes = yesButton.getBoundingClientRect();
+      const maxLeft = area.width - buttonWidth - pad;
+      const maxTop = area.height - buttonHeight - pad;
+      const yesLeft = yes.left - area.left;
+      const yesTop = yes.top - area.top;
+      const currentRect = noButton.getBoundingClientRect();
+      const currentLeft = currentRect.left - area.left;
+      const currentTop = currentRect.top - area.top;
+      let nextPosition = null;
+
+      for (let attempt = 0; attempt < 80; attempt++) {
+        const left = Math.min(maxLeft, Math.max(pad, currentLeft + (Math.random() * 2 - 1) * moveRadius));
+        const top = Math.min(maxTop, Math.max(pad, currentTop + (Math.random() * 2 - 1) * moveRadius));
+        const overlapsYes = left < yesLeft + yes.width + 18 && left + buttonWidth + 18 > yesLeft &&
+          top < yesTop + yes.height + 18 && top + buttonHeight + 18 > yesTop;
+        const movedClearly = Math.hypot(left - currentLeft, top - currentTop) > 24;
+        if (!overlapsYes && movedClearly) {
+          nextPosition = { left, top };
+          break;
+        }
+      }
+
+      if (nextPosition) {
+        noButton.style.left = `${nextPosition.left}px`;
+        noButton.style.top = `${nextPosition.top}px`;
+      }
+    });
+
+    function startCountdown() {
+      const cdScreen = document.getElementById("cdScreen");
+      cdScreen.classList.remove("hidden");
+      const target = new Date(CONFIG.gate.unlockAt).getTime();
+      const timer = setInterval(() => {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          clearInterval(timer);
+          cdScreen.classList.add("hidden");
+          document.getElementById("pwScreen").classList.remove("hidden");
+          return;
+        }
+        document.getElementById("cD").textContent = String(Math.floor(diff / 86400000)).padStart(2, "0");
+        document.getElementById("cH").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+        document.getElementById("cM").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+        document.getElementById("cS").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+      }, 1000);
+    }
+
+    // PIN Keypad 6 Digit & Validasi Otomatis
+    const targetPin = CONFIG.gate.passwordDate.trim();
+    const pinLength = targetPin.length || 6;
+    const pinDotsContainer = document.getElementById("pinDots");
+    const pinGreetingEl = document.getElementById("pinGreeting");
+    const pinClueEl = document.getElementById("pinClue");
+
+    if (CONFIG.gate.greetingText) pinGreetingEl.textContent = CONFIG.gate.greetingText;
+    if (CONFIG.gate.clueText) pinClueEl.textContent = CONFIG.gate.clueText;
+
+    // Buat 6 bulatan indikator sesuai panjang PIN
+    pinDotsContainer.innerHTML = "";
+    for (let i = 0; i < pinLength; i++) {
+      const dot = document.createElement("span");
+      dot.className = "pin-dot";
+      pinDotsContainer.appendChild(dot);
+    }
+    const pinDots = [...pinDotsContainer.querySelectorAll(".pin-dot")];
+
+    let currentPin = "";
+    let attempts = 0;
+    let isCheckingPin = false;
+
+    function updatePinDots(isError = false) {
+      pinDots.forEach((dot, idx) => {
+        dot.classList.toggle("filled", idx < currentPin.length);
+        dot.classList.toggle("error", isError);
+      });
+    }
+
+    function pressDigit(digit) {
+      if (isCheckingPin || currentPin.length >= pinLength) return;
+      currentPin += digit;
+      updatePinDots();
+
+      if (currentPin.length === pinLength) {
+        isCheckingPin = true;
+        setTimeout(verifyPin, 220);
+      }
+    }
+
+    function deleteDigit() {
+      if (isCheckingPin || currentPin.length === 0) return;
+      currentPin = currentPin.slice(0, -1);
+      updatePinDots();
+    }
+
+    function verifyPin() {
+      if (currentPin === targetPin) {
+        startMusic();
+        document.getElementById("pwFormArea").classList.add("hidden");
+        document.getElementById("sealArea").classList.remove("hidden");
+        document.getElementById("waxSeal").classList.add("break");
+        setTimeout(() => {
+          document.getElementById("pwScreen").classList.add("hidden");
+          document.getElementById("welcomeScreen").classList.remove("hidden");
+        }, 1500);
+      } else {
+        attempts++;
+        updatePinDots(true);
+        pinDotsContainer.classList.remove("shake");
+        void pinDotsContainer.offsetWidth;
+        pinDotsContainer.classList.add("shake");
+
+        const wMsg = document.getElementById("wrongMsg");
+        wMsg.textContent = CONFIG.gate.wrongMessage;
+        wMsg.classList.remove("hidden");
+
+        if (attempts >= CONFIG.gate.hintAfter) {
+          const hMsg = document.getElementById("hintMsg");
+          hMsg.textContent = CONFIG.gate.hintText;
+          hMsg.classList.remove("hidden");
+        }
+        if (attempts >= CONFIG.gate.helpAfter) {
+          const wa = document.getElementById("waHelpBtn");
+          wa.href = `https://wa.me/${CONFIG.gate.helpWhatsapp}?text=${encodeURIComponent(CONFIG.gate.helpMessage)}`;
+          wa.classList.remove("hidden");
+        }
+
+        // Kosongkan kembali bulatan setelah animasi getar selesai
+        setTimeout(() => {
+          currentPin = "";
+          isCheckingPin = false;
+          updatePinDots(false);
+        }, 480);
+      }
+    }
+
+    // Event Klik Tombol Keypad di Layar
+    document.querySelectorAll(".pin-key[data-num]").forEach(btn => {
+      btn.addEventListener("click", () => pressDigit(btn.dataset.num));
+    });
+    document.getElementById("pinBackspace").addEventListener("click", deleteDigit);
+
+    // Dukungan Ketik Langsung dari Keyboard Laptop
+    window.addEventListener("keydown", e => {
+      const pwScreen = document.getElementById("pwScreen");
+      const gateOverlay = document.getElementById("gateOverlay");
+      if (pwScreen.classList.contains("hidden") || gateOverlay.classList.contains("hide")) return;
+
+      if (/^[0-9]$/.test(e.key)) {
+        const btn = document.querySelector(`.pin-key[data-num="${e.key}"]`);
+        if (btn) {
+          btn.classList.add("pressed");
+          setTimeout(() => btn.classList.remove("pressed"), 150);
+        }
+        pressDigit(e.key);
+      } else if (e.key === "Backspace") {
+        deleteDigit();
+      }
+    });
+
+    // Story Slides Interaktif
+    let slideIdx = 0;
+    function startStorySlides() {
+      const scr = document.getElementById("storyScreen");
+      const dots = document.getElementById("storyDots");
+      scr.classList.remove("hidden");
+      dots.innerHTML = CONFIG.storySlides.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join("");
+      showSlide(0);
+
+      document.getElementById("nextStoryBtn").onclick = () => {
+        slideIdx++;
+        if (slideIdx < CONFIG.storySlides.length) {
+          scr.style.animation = "none"; void scr.offsetWidth; scr.style.animation = "popIn 0.55s var(--ease)";
+          showSlide(slideIdx);
+        } else {
+          burstPetals();
+          openMainPage();
+        }
+      };
+    }
+
+    function showSlide(i) {
+      document.getElementById("storyEmoji").textContent = CONFIG.storySlides[i].emoji;
+      document.getElementById("storyLabel").textContent = CONFIG.storySlides[i].label;
+      document.getElementById("storyText").textContent = CONFIG.storySlides[i].text;
+      document.getElementById("nextStoryBtn").textContent = i === CONFIG.storySlides.length - 1 ? "Buka Cerita Kita ✨" : "Lanjut →";
+      document.querySelectorAll(".dot").forEach((d, idx) => d.classList.toggle("active", idx === i));
+    }
+
+    function openMainPage() {
+      document.getElementById("gateOverlay").classList.add("hide");
+      document.getElementById("mainPage").classList.remove("hidden");
+      document.querySelectorAll(".hero-word").forEach((w, i) => setTimeout(() => w.classList.add("show"), i * 250 + 250));
+      startTogetherCounter();
+      if (typeof AOS !== "undefined" && !prefersReducedMotion) {
+        AOS.init({
+          once: true,
+          duration: 750,
+          easing: "ease-out-quart",
+          offset: 90,
+          anchorPlacement: "top-bottom",
+          disable: prefersReducedMotion
+        });
+        requestAnimationFrame(() => AOS.refreshHard());
+      } else {
+        document.querySelectorAll("#mainPage [data-aos]").forEach(el => el.classList.add("aos-animate"));
+      }
+      initScrollAnimations();
+    }
+
+    // Musik
+    function startMusic() {
+      const audio = document.getElementById("bgAudio");
+      const dock = document.getElementById("musicDock");
+      const btn = document.getElementById("musicBtn");
+      const bars = document.getElementById("musicBars");
+      const slider = document.getElementById("volumeSlider");
+      audio.src = CONFIG.music.src;
+      const baseVolume = Math.min(1, Math.max(0, CONFIG.music.volume));
+      audio.volume = baseVolume;
+      slider.value = Math.round(baseVolume * 100);
+      dock.classList.remove("hidden");
+      audio.play().then(() => bars.classList.add("play")).catch(() => { });
+      btn.onclick = () => {
+        if (audio.paused) { audio.play().then(() => bars.classList.add("play")).catch(() => { }); }
+        else { audio.pause(); bars.classList.remove("play"); }
+      };
+      slider.oninput = () => { audio.volume = Number(slider.value) / 100; };
+      slider.onchange = () => {
+        if (audio.volume > 0) { audio.play().then(() => { bars.classList.add("play"); btn.classList.remove("muted"); }).catch(() => { }); }
+        else { audio.pause(); bars.classList.remove("play"); btn.classList.add("muted"); }
+      };
+    }
+
+    // Counter Waktu Bersama
+    function startTogetherCounter() {
+      const start = new Date(CONFIG.relationship.startDate);
+      setInterval(() => {
+        const now = new Date();
+        let y = now.getFullYear() - start.getFullYear();
+        let m = now.getMonth() - start.getMonth();
+        let d = now.getDate() - start.getDate();
+        if (d < 0) { m--; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+        if (m < 0) { y--; m += 12; }
+        const diff = now - start;
+        document.getElementById("tY").textContent = Math.max(0, y);
+        document.getElementById("tMo").textContent = Math.max(0, m);
+        document.getElementById("tD").textContent = Math.max(0, d);
+        document.getElementById("tH").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+        document.getElementById("tMi").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+        document.getElementById("tS").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+      }, 1000);
+    }
+
+    // Scroll Reveal & Typewriter Surat
+    function initScrollAnimations() {
+      const tlWrap = document.querySelector(".tl-wrap");
+      const tlProgress = tlWrap.querySelector(".tl-line-progress");
+      const tlDots = [...tlWrap.querySelectorAll(".tl-dot")];
+      let scrollFrame = 0;
+      const updateScroll = () => {
+        scrollFrame = 0;
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        document.getElementById("progressBar").style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
+        const rect = tlWrap.getBoundingClientRect();
+        const drawn = Math.max(0, Math.min(rect.height, window.innerHeight * 0.7 - rect.top));
+        tlProgress.style.height = `${rect.height > 0 ? drawn / rect.height * 100 : 0}%`;
+        tlDots.forEach(dot => {
+          const center = dot.parentElement.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+          dot.classList.toggle("active", drawn >= center);
+        });
+      };
+      const scheduleScroll = () => {
+        if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll);
+      };
+      window.addEventListener("scroll", scheduleScroll, { passive: true });
+      window.addEventListener("resize", scheduleScroll);
+      new ResizeObserver(scheduleScroll).observe(tlWrap);
+      updateScroll();
+
+      const letBody = document.getElementById("letterBody");
+      let typed = false;
+      const letObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !typed) {
+          typed = true;
+          let i = 0; const txt = CONFIG.letter.body;
+          const step = () => { if (i <= txt.length) { letBody.textContent = txt.slice(0, i++); setTimeout(step, 20); } };
+          step();
+        }
+      }, { threshold: 0.25 });
+      letObs.observe(letBody);
+    }
+
+    // Latar Dinamis: Bokeh, Cursor Trail & Click Sparkle
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const bokehLayer = document.getElementById("bokehLayer");
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement("span");
+      b.className = "bokeh";
+      const size = 14 + Math.random() * 46;
+      b.style.width = `${size}px`;
+      b.style.height = `${size}px`;
+      b.style.left = `${Math.random() * 100}%`;
+      b.style.top = `${20 + Math.random() * 100}%`;
+      b.style.animationDuration = `${16 + Math.random() * 14}s`;
+      b.style.animationDelay = `${-Math.random() * 24}s`;
+      bokehLayer.appendChild(b);
+    }
+    if (!reduceMotion && matchMedia("(pointer: fine)").matches) {
+      const trail = document.getElementById("cursorTrail");
+      const sparkles = ["✦", "♡", "✧", "·"];
+      let lastX = -999, lastY = -999;
+      window.addEventListener("pointermove", event => {
+        if (Math.hypot(event.clientX - lastX, event.clientY - lastY) < 14) return;
+        lastX = event.clientX; lastY = event.clientY;
+        const dot = document.createElement("span");
+        dot.className = "cursor-trail";
+        dot.style.left = `${event.clientX}px`;
+        dot.style.top = `${event.clientY}px`;
+        trail.appendChild(dot);
+        requestAnimationFrame(() => { dot.style.transform = "translate(-50%, -50%) scale(0)"; dot.style.opacity = "0"; });
+        setTimeout(() => dot.remove(), 320);
+      }, { passive: true });
+      window.addEventListener("pointerdown", event => {
+        for (let i = 0; i < 6; i++) {
+          const spark = document.createElement("span");
+          spark.className = "click-sparkle";
+          spark.textContent = sparkles[i % sparkles.length];
+          spark.style.left = `${event.clientX}px`;
+          spark.style.top = `${event.clientY}px`;
+          spark.style.setProperty("--sx", `${(Math.random() - 0.5) * 90}px`);
+          spark.style.setProperty("--sy", `${-20 - Math.random() * 50}px`);
+          spark.style.animationDelay = `${i * 40}ms`;
+          document.body.appendChild(spark);
+          setTimeout(() => spark.remove(), 1100);
+        }
+      }, { passive: true });
+    }
+
+    // Partikel Kelopak Canvas
+    const cvs = document.getElementById("petalCanvas");
+    const ctx = cvs.getContext("2d");
+    let W = cvs.width = innerWidth, H = cvs.height = innerHeight;
+    window.onresize = () => { W = cvs.width = innerWidth; H = cvs.height = innerHeight; };
+
+    const petals = Array.from({ length: 18 }, () => makePetal(false));
+    function makePetal(burst) {
+      return {
+        x: Math.random() * W, y: burst ? -20 - Math.random() * 120 : Math.random() * H,
+        r: Math.random() * 4 + 3, vy: burst ? Math.random() * 1.8 + 1 : Math.random() * 0.5 + 0.25,
+        angle: Math.random() * 6, spin: (Math.random() - 0.5) * 0.02, gold: Math.random() > 0.6
+      };
+    }
+    function burstPetals() {
+      for (let i = 0; i < 35; i++) petals.push(makePetal(true));
+      setTimeout(() => petals.splice(18), 4500);
+    }
+    function drawPetals() {
+      ctx.clearRect(0, 0, W, H);
+      petals.forEach(p => {
+        p.y += p.vy; p.x += Math.sin(p.angle) * 0.35; p.angle += p.spin;
+        if (p.y > H + 20) { p.y = -15; p.x = Math.random() * W; }
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.angle);
+        ctx.globalAlpha = 0.45;
+        ctx.fillStyle = p.gold ? "#C9A58B" : "#C98B97";
+        ctx.beginPath(); ctx.ellipse(0, 0, p.r, p.r * 0.6, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      });
+      requestAnimationFrame(drawPetals);
+    }
+    drawPetals();
+
+  </script>
+</body>
+
+</html>
