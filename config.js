@@ -3,58 +3,60 @@
     // 1. CONFIG UTAMA (Semua pengaturan cukup diubah dari objek ini)
     // =========================================================================
     const CONFIG = {
-      identity: { clientName: "Iqbal", partnerName: "Lifi", pageTitle: "Happy Anniversary" },
+      identity: { clientName: "Arga", partnerName: "Nara", pageTitle: "Happy Anniversary — Arga & Nara" },
       gate: {
         unlockAt: "2026-10-23T00:00:00+10:00", // Ubah ke 2027 jika ingin tes Countdown
-        passwordDate: "271023",              // Tanggal Anniversary: 14 / 02 / 2023
+        passwordDate: "000000",              // PIN demo
+        greetingText: "Hi Nara, ayo tebak passwordnya~",
+        clueText: "Untuk mencoba demo, masukkan PIN 000000",
         wrongMessage: "",
         hintAfter: 2,
-        hintText: "Petunjuk: Hari ketika kita mulai jadi 'kita'",
-        helpAfter: 3,
-        helpWhatsapp: "6282125492682",
+        hintText: "Petunjuk: Masukkan enam angka nol (000000)",
+        helpAfter: Infinity, // Bantuan WhatsApp dinonaktifkan untuk demo
+        helpWhatsapp: "", // Isi nomor bisnis dan ubah helpAfter untuk mengaktifkan bantuan
         helpMessage: "aku lupa tanggal anniversary kita"
       },
       storySlides: [
-        { emoji: "🕰️", label: "Perjalanan Kita", text: "Terima kasih ya sudah menemani akuu melewati begitu banyak cerita." },
+        { emoji: "🕰️", label: "Perjalanan Kita", text: "Dari satu pertemuan sederhana, kita mulai menulis cerita yang begitu berarti." },
         { emoji: "🥂", label: "Hari Istimewa", text: "Siap melihat kembali kepingan perjalanan kita dari awal sampai hari ini?" }
       ],
       relationship: { startDate: "2023-10-27T19:30:00+11:30" },
       hero: { title: "Happy 3rd Anniversary, To Us", subtitle: "27 Oktober 2023 — Selamanya" },
       timeline: [
-        { date: "19 September 2023", title: "Chatingan pertama", story: "Berawal dari kamu yang chat aku yang mau kenalan sama aku yang berlanjut dengan topik pembicaraan yang absurd tetapi sangat menyenangkan dan seru.", photo: "jejakwaktu/1.jpg" },
-        { date: "28 September 2023", title: "Pertama kali ketemuan secara langsung", story: "Waktu itu kamu beli dagangan umi disitu aku sangat deg deg an sampai gabisa hitung 50 - 8 HAHAHAHAHA, disitu aku jatuh cinta pada pandangan pertama 😆.", photo: "jejakwaktu/2.jpg" },
-        { date: "02 Oktober 2023", title: "Foto bareng pertama", story: "Gak lama dari itu disekolah ada event pakai baju batik disitu aku langsung ajak kamu foto bareng, muka tegang nya sangat terlihat yaa HAHAHA.", photo: "jejakwaktu/3.jpg" },
-        { date: "06 Oktober 2o23", title: "Nganterin pulang pertama kali", story: "Disitu aku panik banget mau ngobrolin apa dan pas udah sampai sana aku harus apa.", photo: "jejakwaktu/4.jpg" },
-        { date: "19 Oktober 2o23", title: "Fotobooth pertama", story: "Waktu itu kebetulan banget ada acara disekolah ada fotobooth nya kita langsung fotobooth bareng dan foto pake kamera aku jugaa aku sangat senang bisa foto banyak sama kamuu", photo: "jejakwaktu/5.jpg" },
-        { date: "21 Oktober 2o23", title: "Main bareng pertama", story: "Pertama kali kita main bareng diluar kita ke McD Pekayon yang sangat dingin ituu, pas kita tidak ada topik kita main ludo sama ular tangga HAHAHA. Foto nya ada watermarknya nya yahhh.", photo: "jejakwaktu/6.jpg" },
-        { date: "27 Oktober 2023", title: "Menyatakan Cinta", story: "Waktu perjalanan anterin kamu pulang aku menyatakan cinta ke kamu dan kamu bilang jawab nya nanti tunggu aku pulang 😭, aku kepikiran banget pas solat jum’at kamu nolak aku atau tidak sehabis solat jumat kamu chat aku dan kamu nerima cinta aku YEYYY", photo: "jejakwaktu/7.jpg" },
-        { date: "04 November 2023", title: "First date", story: "Waktu sampai rumah kamu aku pertama kali ketemu mamah kamu takut salah kata kata dan kita main sampai malam pas pulang kita kehujanan dan neduh di indomaret HAHAHA", photo: "jejakwaktu/8.jpg" },
-        { date: "25 November 2023", title: "First time main kerumah", story: "Dirumah kamu kita buat gelang dari manik manik dan disitu aku kenal mamah kamu ternyata sangat baik dan welcome ke akuu", photo: "jejakwaktu/9.jpg" },
-        { date: "Selamanya", title: "Our Now", story: "Banyak masa masa yang sudah kita laluin bareng bareng dan kita masih bersama sampai detik ini.", photo: "jejakwaktu/10.jpg" }
+        { date: "19 September 2023", title: "Sapaan Pertama", story: "Satu pesan singkat menjadi awal percakapan panjang. Tanpa terasa, berbagi cerita denganmu menjadi bagian yang paling kutunggu setiap hari.", photo: "jejakwaktu/1.jpg" },
+        { date: "28 September 2023", title: "Pertemuan Pertama", story: "Ada sedikit gugup dan banyak senyum hari itu. Pertemuan sederhana yang ternyata menjadi awal dari begitu banyak kenangan.", photo: "jejakwaktu/2.jpg" },
+        { date: "02 Oktober 2023", title: "Foto Pertama Kita", story: "Mungkin posenya masih canggung, tetapi senyumnya begitu jujur. Foto pertama yang selalu membuat kita tersenyum saat melihatnya kembali.", photo: "jejakwaktu/3.jpg" },
+        { date: "06 Oktober 2023", title: "Jalan Pulang Bersamamu", story: "Perjalanan terasa terlalu singkat saat bersamamu. Rasanya selalu ada cerita yang ingin dilanjutkan dan waktu yang ingin diperlambat.", photo: "jejakwaktu/4.jpg" },
+        { date: "19 Oktober 2023", title: "Senyum dalam Satu Bingkai", story: "Beberapa pose lucu, tawa yang tak berhenti, dan satu lembar foto. Hal kecil yang menjadi kenangan besar untuk kita.", photo: "jejakwaktu/5.jpg" },
+        { date: "21 Oktober 2023", title: "Sore yang Berkesan", story: "Tidak perlu rencana istimewa. Duduk bersama, berbagi makanan, dan bercerita sudah cukup membuat hari itu terasa berbeda.", photo: "jejakwaktu/6.jpg" },
+        { date: "27 Oktober 2023", title: "Awal Cerita Kita", story: "Hari ketika aku memberanikan diri mengungkapkan perasaan, dan kamu memilih untuk berjalan bersamaku. Sejak saat itu, ada kita dalam setiap rencana.", photo: "jejakwaktu/7.jpg" },
+        { date: "04 November 2023", title: "Kencan Pertama", story: "Kita menghabiskan hari dengan obrolan ringan dan tawa sederhana. Pulang dengan hati hangat dan keinginan untuk segera bertemu lagi.", photo: "jejakwaktu/8.jpg" },
+        { date: "25 November 2023", title: "Semakin Dekat", story: "Perlahan kita mengenal dunia satu sama lain. Tentang keluarga, kebiasaan kecil, dan mimpi yang ingin kita wujudkan bersama.", photo: "jejakwaktu/9.jpg" },
+        { date: "Selamanya", title: "Cerita yang Terus Berlanjut", story: "Kita sudah melewati banyak musim bersama. Masih ada begitu banyak tempat untuk dikunjungi dan kenangan untuk ditulis, berdua.", photo: "jejakwaktu/10.jpg" }
       ],
       gallery: [
-        { src: "album/1.jpg", caption: "First time kerumah papah." },
-        { src: "album/2.jpg", caption: "Ngerawat kamu waktu sakit." },
-        { src: "album/3.jpg", caption: "First time kerumah aku." },
-        { src: "album/4.jpg", caption: "Makan Sushi Tei dapat menu ulang tahun." },
-        { src: "album/1.mp4", caption: "Ngintip aku main hp." },
-        { src: "album/2.mp4", caption: "Ngeledekin gabisa foto." },
-        { src: "album/3.mp4", caption: "Main game tiru gambar." },
-        { src: "album/4.mp4", caption: "First time makan sushi." },
-        { src: "album/5.mp4", caption: "Udah mulai tengil." },
-        { src: "album/6.mp4", caption: "Membuat gelang manik manik." },
-        { src: "album/7.mp4", caption: "Dadahhhh." },
+        { src: "album/1.jpg", caption: "Satu hari, seribu kenangan." },
+        { src: "album/2.jpg", caption: "Bersamamu, hal sederhana terasa istimewa." },
+        { src: "album/3.jpg", caption: "Tempat favoritku adalah di dekatmu." },
+        { src: "album/4.jpg", caption: "Merayakan kebahagiaan kecil bersama." },
+        { src: "album/1.mp4", caption: "Potongan kecil dari cerita kita." },
+        { src: "album/2.mp4", caption: "Tawa yang ingin selalu kuingat." },
+        { src: "album/3.mp4", caption: "Selalu ada cara untuk bahagia bersama." },
+        { src: "album/4.mp4", caption: "Mencoba hal baru, berdua." },
+        { src: "album/5.mp4", caption: "Sisi lucu yang membuatku jatuh cinta." },
+        { src: "album/6.mp4", caption: "Membuat kenangan dengan cara kita." },
+        { src: "album/7.mp4", caption: "Sampai jumpa di cerita berikutnya." },
       ],
       reasons: [
-        "aku suka dengar kamu bercerita tentang hari harimu, rasanya tenang dan enggak bosen.",
-        "senyuman membuat aku sangat senang dan bisa jadi obat lelah aku.",
-        "kebaikan kamu bikin aku kagum dan semakin suka sama kamu.",
-        "perhatian hal hal kecil dari kamu membuat aku selalu merasa special.",
-        "ekspresi kamu waktu manja dan bercanda itu gemesin.",
+        "Kamu selalu punya cara membuat hari biasa terasa istimewa.",
+        "Senyummu adalah hal sederhana yang paling mudah membuatku bahagia.",
+        "Kebaikan hatimu membuatku jatuh cinta berkali-kali.",
+        "Kamu mengingat hal kecil yang bahkan sering kulupakan tentang diriku sendiri.",
+        "Bersamamu, aku bisa menjadi diriku sendiri dan merasa diterima.",
       ],
       letter: {
-        body: "Happy 3rd Anniversary, Sayang!,\n\nTerimakasih banyak buat semua hal hal indah yang udah kita lewati bareng bareng 🤗. Terimakasih yaa sudah setia sama aku dan sabar ngadepin aku, dan selalu mengusahakan yang terbaik buat hubungan kita. Aku sayang bangett sama kamuu.\n\nUntuk Kedepannya aku akan usahakan yang terbaik buat kamu ❤️,Semoga kita bisa terus bersamaa, dan buat lebih banyak kenangan manis kedepan nyaa,\n\nMakasih udah jadi bagian terbaik di hidup aku. Love you so much, my love! 🥰",
-        signature: "Dengan kasih sayang,\nIqbal"
+        body: "Happy 3rd Anniversary, Nara!\n\nTiga tahun lalu, kita memulai cerita ini dengan perasaan yang sederhana. Hari ini, saat melihat kembali semua yang sudah kita lewati, aku bersyukur karena kamulah orang yang berjalan di sampingku.\n\nTerima kasih untuk setiap tawa, setiap percakapan panjang, dan setiap dukungan di hari yang tidak mudah. Bersamamu, aku belajar bahwa cinta tumbuh lewat perhatian kecil dan kemauan untuk saling memahami.\n\nSemoga kita terus memberi ruang untuk tumbuh, saling menguatkan, dan menemukan alasan baru untuk tersenyum bersama. Masih banyak cerita yang ingin kutulis denganmu.\n\nSelamat hari jadi, sayang. Untuk kita, dan semua hari indah yang menanti. ❤️",
+        signature: "Dengan kasih sayang,\nArga"
       },
       music: {
         src: "aboutyou.mp3",
@@ -62,4 +64,3 @@
       },
       dev: { enablePreview: true, previewCode: "demo2026" }
     };
-
