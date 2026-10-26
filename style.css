@@ -394,6 +394,7 @@
 
     .btn {
       display: inline-block;
+      border-radius: 999px;
       padding: 13px 32px;
       border: 1px solid var(--deep-rose);
       color: var(--deep-rose);
@@ -507,6 +508,7 @@
 
     .card-box {
       width: 100%;
+      border-radius: 28px;
       max-width: 500px;
       position: relative;
       text-align: center;
@@ -823,6 +825,7 @@
     }
 
     .msg-hint {
+      border-radius: 14px;
       font-family: var(--font-heading);
       font-style: italic;
       font-size: 1.05rem;
