@@ -63,16 +63,19 @@
     </div>
 
     <!-- 1. Layar Countdown (Muncul jika unlockAt di masa depan) -->
-    <div id="cdScreen" class="card-box hidden">
-      <p class="label" id="cdTop">Sebuah kejutan kecil sedang disiapkan untukmu</p>
-      <div class="line"></div>
+    <div id="cdScreen" class="card-box countdown-card hidden">
+      <div class="countdown-stars" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
+      <p class="label" id="cdTop">✦ menghitung hari ✦</p>
+      <h1 class="countdown-title">your special day <em>is coming</em></h1>
+      <p class="countdown-subtitle">sesuatu yang indah sedang menunggumu ♡</p>
       <div class="cd-grid">
         <div><span id="cD" class="cd-num">00</span><span class="cd-lbl">Hari</span></div>
         <div><span id="cH" class="cd-num">00</span><span class="cd-lbl">Jam</span></div>
         <div><span id="cM" class="cd-num">00</span><span class="cd-lbl">Menit</span></div>
         <div><span id="cS" class="cd-num">00</span><span class="cd-lbl">Detik</span></div>
       </div>
-      <p id="cdBot" style="font-size:0.84rem;opacity:0.75">Halaman ini akan terbuka otomatis saat waktunya tiba.</p>
+      <button id="cdOpenGift" class="btn countdown-gift" type="button" disabled>open your gift ✦</button>
+      <p id="cdBot" class="countdown-note" role="status">sedikit lagi menuju hari istimewa kita ✦</p>
     </div>
 
     <!-- 2. Layar Password (LANGSUNG TAMPIL DEFAULT AGAR TIDAK PERNAH BLANK) -->

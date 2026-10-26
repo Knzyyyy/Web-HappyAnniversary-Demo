@@ -272,19 +272,28 @@
       const cdScreen = document.getElementById("cdScreen");
       cdScreen.classList.remove("hidden");
       const target = new Date(CONFIG.gate.unlockAt).getTime();
-      const timer = setInterval(() => {
-        const diff = target - Date.now();
-        if (diff <= 0) {
-          clearInterval(timer);
-          cdScreen.classList.add("hidden");
-          document.getElementById("pwScreen").classList.remove("hidden");
-          return;
-        }
+      const giftButton = document.getElementById("cdOpenGift");
+      giftButton.disabled = true;
+      giftButton.onclick = () => {
+        if (Date.now() < target) return;
+        cdScreen.classList.add("hidden");
+        document.getElementById("pwScreen").classList.remove("hidden");
+      };
+      let timer;
+      const updateCountdown = () => {
+        const diff = Math.max(0, target - Date.now());
         document.getElementById("cD").textContent = String(Math.floor(diff / 86400000)).padStart(2, "0");
         document.getElementById("cH").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
         document.getElementById("cM").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
         document.getElementById("cS").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
-      }, 1000);
+        if (diff <= 0) {
+          clearInterval(timer);
+          giftButton.disabled = false;
+          document.getElementById("cdBot").textContent = "waktunya sudah tiba — buka yuk ✦";
+        }
+      };
+      timer = setInterval(updateCountdown, 1000);
+      updateCountdown();
     }
 
     // PIN Keypad 6 Digit & Validasi Otomatis

@@ -551,6 +551,128 @@
       opacity: 0.65;
     }
 
+    /* Countdown hadiah */
+    #cdScreen {
+      max-width: 660px;
+      max-height: calc(100dvh - 40px);
+      overflow-y: auto;
+      padding: clamp(36px, 7vw, 64px) clamp(18px, 5vw, 48px);
+      border-radius: 28px;
+      border-color: rgba(201, 165, 139, 0.5);
+      background: radial-gradient(ellipse at top left, rgba(243, 220, 221, 0.9), transparent 65%),
+        linear-gradient(145deg, #fffdfb, var(--ivory) 60%, #f3e3e0);
+      box-shadow: 0 24px 70px rgba(158, 85, 102, 0.12);
+      isolation: isolate;
+    }
+
+    #cdScreen .label {
+      color: var(--deep-rose);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: lowercase;
+      margin-bottom: 30px;
+    }
+
+    .countdown-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--text-dark);
+    }
+
+    .countdown-title em {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.58em;
+      font-weight: 400;
+      color: var(--deep-rose);
+    }
+
+    .countdown-subtitle {
+      margin-top: 24px;
+      font-size: clamp(0.72rem, 2.5vw, 0.85rem);
+    }
+
+    #cdScreen .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(8px, 3vw, 20px);
+      margin: 40px 0 36px;
+    }
+
+    #cdScreen .cd-grid > div {
+      min-width: 0;
+      padding: clamp(16px, 4vw, 26px) 4px;
+      border: 1px solid rgba(201, 165, 139, 0.65);
+      border-radius: clamp(14px, 3vw, 22px);
+      background: rgba(251, 246, 242, 0.65);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 8px 20px rgba(158, 85, 102, 0.04);
+    }
+
+    #cdScreen .cd-num {
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-variant-numeric: tabular-nums;
+      overflow-wrap: anywhere;
+      color: var(--deep-rose);
+    }
+
+    #cdScreen .cd-lbl {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(0.5rem, 2vw, 0.65rem);
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      color: var(--deep-rose);
+      opacity: 0.8;
+    }
+
+    #cdScreen .countdown-gift {
+      max-width: 100%;
+      border: 1.5px solid var(--rose-gold);
+      border-radius: 999px;
+      padding: 15px 34px;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+    }
+
+    #cdScreen .countdown-gift:disabled {
+      opacity: 0.55;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+      color: var(--deep-rose);
+    }
+
+    .countdown-note {
+      margin-top: 18px;
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--deep-rose);
+    }
+
+    .countdown-stars {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      color: var(--rose-gold);
+    }
+
+    .countdown-stars span {
+      position: absolute;
+      text-shadow: 0 0 12px rgba(201, 165, 139, 0.5);
+    }
+
+    .countdown-stars span:nth-child(1) { top: 9%; left: 10%; font-size: 12px; }
+    .countdown-stars span:nth-child(2) { top: 36%; right: 7%; font-size: 23px; }
+    .countdown-stars span:nth-child(3) { top: 42%; left: 7%; font-size: 18px; }
+    .countdown-stars span:nth-child(4) { bottom: 10%; right: 12%; font-size: 13px; }
+
     /* Ornamen Bunga & Teks Sapaan di Atas Keypad */
     .pin-flower {
       width: 58px;
