@@ -5,7 +5,7 @@
     const CONFIG = {
       identity: { clientName: "Arga", partnerName: "Nara", pageTitle: "Happy Anniversary — Arga & Nara" },
       gate: {
-        unlockAt: "2026-10-23T00:00:00+10:00", // Ubah ke 2027 jika ingin tes Countdown
+        unlockAt: "2027-10-23T00:00:00+10:00", // Ubah ke 2027 jika ingin tes Countdown
         passwordDate: "000000",              // PIN demo
         greetingText: "Hi Nara, ayo tebak passwordnya~",
         clueText: "Untuk mencoba demo, masukkan PIN 000000",
